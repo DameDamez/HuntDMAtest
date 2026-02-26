@@ -344,6 +344,7 @@ void ImGuiMenu::HandleInput() {
     }
 
     if (ImGuiUtils::IsKeyPressed(Configs.General.OpenMenuKey) && ImGuiUtils::IsKeyPressed(VK_END)) {
+        TargetProcess.Shutdown();
         exit(0);
     }
 
@@ -1691,6 +1692,7 @@ void ImGuiMenu::RenderSettingsTab() {
     {
         LOG_INFO("Changing OverlayMode mode to %s. Restart needed.", Configs.General.OverlayMode ? L"True" : L"False");
         SaveConfig(ConfigPath);
+        TargetProcess.Shutdown();
         exit(0);
     }
     if (ImGui::IsItemHovered()) {
@@ -1755,6 +1757,7 @@ void ImGuiMenu::RenderSettingsTab() {
     ImGui::Separator();
 
     if (ImGui::Button(LOC("menu", "settings.ExitApp").c_str(), ImVec2(100 * Configs.General.UIScale, 100 * Configs.General.UIScale))) {
+        TargetProcess.Shutdown();
         exit(0);
     }
     if (ImGui::IsItemHovered()) {

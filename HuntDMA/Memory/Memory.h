@@ -56,6 +56,12 @@ public:
 	~Memory();
 
 	/**
+	 * \brief Explicitly closes the DMA connection and frees resources.
+	 * Must be called before exit() to properly release the FPGA device.
+	 */
+	void Shutdown();
+
+	/**
 	* brief Initializes the DMA
 	* This is required before any DMA operations can be done.
 	* @param process_name the name of the process

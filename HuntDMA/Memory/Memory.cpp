@@ -27,9 +27,19 @@ Memory::Memory()
 
 Memory::~Memory()
 {
-	VMMDLL_Close(this->vHandle);
-	DMA_INITIALIZED = false;
-	PROCESS_INITIALIZED = false;
+	Shutdown();
+}
+
+void Memory::Shutdown()
+{
+	if (DMA_INITIALIZED && this->vHandle)
+	{
+		VMMDLL_Close(this->vHandle);
+		this->vHandle = nullptr;
+		DMA_INITIALIZED = false;
+		PROCESS_INITIALIZED = false;
+		LOG_INFO("DMA connection closed successfully.");
+	}
 }
 
 bool Memory::DumpMemoryMap(bool debug)

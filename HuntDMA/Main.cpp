@@ -435,6 +435,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     Keyboard::StopPolling();
     g_CacheManager.Stop();
     g_ImGuiMenu.Shutdown();
+    TargetProcess.Shutdown();
 
     return 0;
 }
