@@ -301,6 +301,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     
     LOG_INFO("Application shutting down, cleaning up...");
     g_ImGuiMenu.Shutdown();
+    TargetProcess.Shutdown();
 
     return 0;
 }
